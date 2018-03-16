@@ -3,17 +3,20 @@ const sanitizer = require('sanitizer')
 
 
 exports.handler = function(event, context, callback) {
-  const googleNews = new GoogleNewsRss();
-  if (event.hasOwnProperty('keyword')) {
+
+  try {
+    const googleNews = new GoogleNewsRss()
+    if (event.hasOwnProperty('keyword')) {
     
-  googleNews
-    .search('unicorns')
-    .then(resp => {
-      callback(null, resp);
-    });
+      googleNews
+        .search(event.keyword)
+        .then(resp => callback(null, resp))
+    } else {
 
-  } else {
-    callback(null, 'invalid request')
+      callback(null, 'invalid request')
+    }
+  } catch (err) {
 
+    callback(err, null)
   }
-};
+}
