@@ -1,9 +1,12 @@
 ## Lambda 
 
-Set the following env variable:
+```
+npm install
+```
+
+Set the following env variables:
 
 ```
-export api_key=
 export aws_secret_access_key=
 export aws_access_key_id=
 export aws_account_id=
@@ -15,4 +18,9 @@ export memory_size=
 export runtime=
 export publish=
 export handler=
+```
+Then deploy to aws with:
+
+```
+gulp deploy
 ```
